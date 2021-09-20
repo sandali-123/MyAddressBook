@@ -52,9 +52,9 @@ class ListUserComponent extends Component {
 
             <div>
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center offset-2">
                     <div className="table-search">
-                        <input className="form-control" type="search" placeholder="Search" name="searchQuery" onChange={this.handleSearch}></input>
+                        <input className="form-control" type="search" placeholder="Search ..." name="searchQuery" onChange={this.handleSearch}></input>
                     </div>
                 </div>
                  <br></br><br></br>
