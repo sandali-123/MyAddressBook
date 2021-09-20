@@ -24,7 +24,8 @@ class CreateUserComponent extends Component {
 
     saveUser = (e) => {
         e.preventDefault();
-        var pattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+       
+         let phoneno = /^\d{10}$/;
         let user = {name: this.state.name, age: this.state.age, mobile: this.state.mobile , dob: this.state.dob,address: this.state.address};
         console.log('user => ' + JSON.stringify(user));
         if(!this.state.name){
@@ -41,9 +42,8 @@ class CreateUserComponent extends Component {
         if(!this.state.mobile.length === 10){
             return alert("Please enter 10 digits ")
         }
-        if(!this.state.dob.match(pattern))
-        {
-            return alert("Incorrect DOB format")
+        if(!this.state.mobile.match(phoneno)){
+            return alert("Incorrect Mobile No ! ")
         }
         
         
@@ -85,26 +85,27 @@ class CreateUserComponent extends Component {
                         <div className="card col-md-6 offset-md-3 offset-md-3">
                             <form method="POST" >
                                 <div className="form-group "><br></br>
-                                    <label for="exampleInputName"><b>Name (Mandatory)</b></label>
+                                    <label for="exampleInputName"><b>Name <span class="required">*</span> :</b></label>
                                     <input className="form-control" id="exampleInputName" placeholder="Name" value={this.state.name} onChange={this.changeNameHandler}  required/>
 
                                 </div>
-                                <div className="form-group">
-                                    <label for="exampleInputAge"><b>Age</b></label>
+                                   <div className="form-group">
+                                    <label for="exampleInputAge"><b>Age :</b></label>
                                     <input className="form-control" id="exampleInputAge" placeholder="Age" value={this.state.age} onChange={this.changeAgeHandler} />
                                 </div>
                                 <div className="form-group">
-                                    <label for="exampleInputDOB"><b>DOB </b></label>
-                                    <input className="form-control" id="exampleInputDOB" placeholder="eg : 01/01/1997" value={this.state.dob} onChange={this.changeDobHandler} />
+                                    <label for="exampleInputDOB"><b>DOB :</b></label>
+                                    <input className="form-control" type="date" id="exampleInputDOB"  value={this.state.dob} onChange={this.changeDobHandler} />
 
                                 </div>
+                                
                                 <div className="form-group">
-                                    <label for="exampleInputMobile"><b>Mobile Number (Mandatory)</b></label>
+                                    <label for="exampleInputMobile"><b>Mobile Number<span class="required">*</span> :</b></label>
                                     <input className="form-control" id="exampleInputMobile" placeholder="Mobile Number" value={this.state.mobile} onChange={this.changeMobileHandler}  required/>
 
                                 </div>
                                 <div className="mb-3">
-                                    <label for="validationTextarea"><b>Address</b></label>
+                                    <label for="validationTextarea"><b>Address :</b></label>
                                     <textarea className="form-control " id="validationTextarea" placeholder="Address"  value={this.state.address} onChange={this.changeAddrHandler}></textarea>
                                     
                                 </div>
